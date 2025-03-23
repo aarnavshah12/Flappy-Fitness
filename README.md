@@ -1,158 +1,67 @@
-# SpendWise
+# Flappy Fitness
 
-SpendWise is an AI-powered receipt analyzer that helps users make smarter financial decisions by providing economic insights and personalized recommendations. The app analyzes receipts, evaluates purchasing decisions, and suggests alternatives to help users save money over time.
+Flappy Fitness is an interactive fitness game that uses a camera to track exercises and provide real-time feedback. The game features three main exercises: squats, jumping jacks, and toe touches. Flappy Fitness uses a Pose Estimation algorithm in MediaPipe to detect the motion of specific body landmarks to determine whether a player is correctly performing the required exercise, and if it is then sending communicating this information through SocketIO to the PyGame program controlling the movements of the bird in a one-way flow of data. 
 
-![SpendWise Dashboard](https://github.com/user-attachments/assets/spendwise-dashboard.png)
+![Flappy Fitness](https://github.com/user-attachments/assets/04277aef-40bf-42c4-8f7c-ade62e6d2e25)
 
-[![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://www.python.org/downloads/)
-[![Flask](https://img.shields.io/badge/Flask-2.0+-green.svg)](https://flask.palletsprojects.com/)
-[![Bootstrap](https://img.shields.io/badge/Bootstrap-5.0+-purple.svg)](https://getbootstrap.com/)
+## Files and Their Purposes
 
----
+- `main.py`: Initializes the game, connects to the server, and runs the main game loop.
+- `exercises.py`: Handles exercise detection using computer vision and connects to the server to send exercise data.
+- `server.py`: Handles server-side operations, including connecting clients and receiving exercise data.
+- `run_it_all.py`: Runs the main, exercise, and server files concurrently.
 
-## 📖 Project Inspiration
+## Setup Instructions
 
-In our lives, coming from middle-class households, shopping as a whole can get expensive. We understand the struggle of balancing expenses while trying to make smart financial decisions. This inspired us to create SpendWise—an app that not only helps track spending but also provides actionable insights to save more.
+1. **Install Dependencies**: Ensure you have all the required dependencies installed. You can install them using pip.
+    ```bash
+    pip install pygame socketio opencv-python mediapipe eventlet
+    ```
 
-By leveraging AI to analyze receipts and gamifying smart financial choices, SpendWise transforms mundane shopping trips into opportunities for financial growth and learning. To make the experience even more engaging, we introduced a **multiplayer financial game** where users can compete with friends, family, or a broader community. This competitive element encourages smarter spending decisions while making personal finance fun and collaborative.
+2. **Run the Application**: Execute the `run_it_all.py` script to start the game, exercise detection, and server concurrently.
+    ```bash
+    python run_it_all.py
+    ```
 
----
+## Gameplay Instructions
 
-## 📊 Features
+![Screenshot 2024-07-31 002244](https://github.com/user-attachments/assets/050b2950-257c-438f-b23a-b5905b7987f0)
 
-- **Smart Receipt Analysis**: Upload receipt images and extract store details, items, and prices using Google's Gemini AI.  
-- **Economic Evaluation**: Evaluate purchases against market data, calculate potential savings, and get an "economic score."  
-- **Store Recommendations**: Based on location, receive suggestions for nearby stores with better prices for similar items.  
-- **Financial Gamification**: Earn experience points and improve financial stats (frugality, awareness, consistency) by making economical choices.  
-- **Multiplayer Financial Game**: Challenge friends to spending competitions—track who saves the most and rank on leaderboards.  
-- **Achievement System**: Earn badges and level up by consistently making smart financial decisions.  
-- **Personalized Insights**: Get tailored financial advice based on your spending patterns and stats.  
-- **User Authentication**: Secure account system with email verification.  
-- **Financial Dashboard**: Visualize spending habits and track your savings over time.  
+1. **Starting the Game**:
+    - When you start the game, it will connect to the server and wait for the player to begin.
+    - The game will randomly select one of the three exercises: squats, jumping jacks, or toe touches.
 
----
+2. **Exercise Guidelines**:
+    - **Squats**: Ensure your arms go below your knees and your legs form a 90-degree angle.
+    - **Jumping Jacks**: Your arms should touch at the top and then retreat back while jumping.
+    - **Toe Touches**: Your hands should completely touch your toes.
 
-## 🛠️ Tech Stack
+3. **Camera Setup**:
+    - Ensure your entire body is visible in the camera frame at all times for accurate detection.
+    - Position yourself at a distance where your full body fits within the camera view.
 
-**Languages:**  
-- Python (Backend logic)  
-- HTML/CSS/JavaScript (Frontend)  
-- SQL (Database queries)  
+4. **In-Game Feedback**:
+    - The game will provide real-time feedback on your exercise form and count your repetitions.
+    - Make sure to follow the visual feedback to maintain proper form.
 
-**Frameworks & Libraries:**  
-- Flask (Web framework)  
-- SQLAlchemy (ORM)  
-- Flask-Login (Authentication)  
-- Bootstrap (UI framework)  
-- Jinja2 (Templating)  
+## Features
 
-**APIs:**  
-- Google Generative AI (Gemini API)  
-- OpenStreetMap  
-- Overpass  
-- OpenFoodFacts  
-- ipinfo.io  
+![Screenshot 2024-07-31 001255](https://github.com/user-attachments/assets/06ee3ce5-f6ab-4733-8609-1bd56880eb5b)
+![Screenshot 2024-07-31 001400](https://github.com/user-attachments/assets/57e5709a-6d33-4a56-ba08-5764ca905e5b)
 
-**Platforms:**  
-- Google Cloud (Gemini API integration)  
-- SQLite/PostgreSQL (Database)  
+- **Instruction Menu**: Provides the best instructions depending on the exercise.
+- **Real-Time Connection**: Ensures a real-time connection to Flappy Bird without any output delay.
+- **Accurate Exercise Detection**: Uses computer vision to accurately detect and count exercise repetitions.
+- **Real-Time Feedback**: Offers immediate feedback on exercise performance to help you improve your form.
 
----
+## Development and Contributions
 
-## 📥 Installation
+- If you wish to contribute to the project, feel free to fork the repository and submit pull requests.
+- For any issues or feature requests, please open an issue on the repository.
 
-1. **Clone the repository**:  
-   ```bash
-   git clone https://github.com/yourusername/spendwise.git
-   cd spendwise
-Create a virtual environment:
+## Youtube Video Promotion
+https://youtu.be/Gxp1On56xcA
 
-bash
-Copy
-Edit
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-Install dependencies:
+## License
 
-bash
-Copy
-Edit
-pip install -r requirements.txt
-Set up environment variables:
-Create a .env file with the following variables:
-
-bash
-Copy
-Edit
-SESSION_SECRET=your_secret_key
-MAIL_USERNAME=your_email@gmail.com
-MAIL_PASSWORD=your_app_password
-MAIL_DEFAULT_SENDER=your_email@gmail.com
-Initialize the database:
-
-bash
-Copy
-Edit
-flask init-db
-Start the application:
-
-bash
-Copy
-Edit
-flask run
-🎮 Usage
-Create an account and verify your email.
-
-Add your Gemini API key in the API Keys section.
-
-Upload a receipt image to analyze your spending.
-
-View insights and store recommendations to save money.
-
-Compete in multiplayer spending challenges and track progress via the leaderboard.
-
-📂 Project Structure
-php
-Copy
-Edit
-spendwise/
-├── backend/
-│   ├── templates/        # HTML templates
-│   ├── static/           # CSS, JS, and images
-│   ├── models.py         # Database models
-│   ├── app.py            # Main Flask app
-│   ├── ocr_service.py    # Receipt text extraction logic
-│   └── categorizer.py    # Expense categorization logic
-├── requirements.txt      # Python package dependencies
-└── README.md             # Project documentation
-🧱 How We Built It
-We followed an iterative development process, breaking down the system into core modules and enhancing features over time.
-
-Receipt Processing Pipeline: Utilized Google's Gemini AI for accurate text extraction from receipts.
-
-Economic Analysis Engine: Built algorithms to compare spending with market alternatives.
-
-Location-Based Services: Integrated geographic APIs to find better deals at nearby stores.
-
-Responsive UI: Designed a clean, user-friendly interface using Bootstrap for multi-device support.
-
-Authentication & Security: Implemented secure user authentication with email verification.
-
-🚀 What's Next for SpendWise
-Mobile App Development: Launch native iOS and Android versions.
-
-ML-Based Price Predictions: Implement machine learning for future price estimation.
-
-Budget Integration: Incorporate budgeting tools for better expense tracking.
-
-Community Features: Allow users to share savings tips and participate in community challenges.
-
-Personalized Financial Coaching: Enhance AI-driven recommendations for deeper insights.
-
-📜 License
-This project is licensed under the MIT License – see the LICENSE file for details.
-
-👥 Contributors
-Your Name
-
-Contributor Name
+This project is licensed under the MIT License. See the `LICENSE` file for more details.
